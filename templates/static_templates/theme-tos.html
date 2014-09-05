@@ -1,0 +1,14 @@
+<%!
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+%>
+<%inherit file="/main.html" />
+
+<%namespace name='static' file='/static_content.html'/>
+
+<%block name="title"><title>${_('Terms of Service')}</title></%block>
+
+<section class="static-container tos" style="padding: 0 25px; box-sizing: border-box;">
+<h1 id="tos" style="text-align: left;">${_('Welcome to the EPAM Learning and Research Community')}</h1>
+
+</section>

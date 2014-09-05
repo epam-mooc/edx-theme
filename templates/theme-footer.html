@@ -1,0 +1,26 @@
+## mako
+<%! 
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+  from edxmako.shortcuts import marketing_link
+%>
+<div class="wrapper-footer">
+  <footer>
+    <div class="colophon">
+      <nav class="nav-colophon">
+        <ol>
+          <li><a href="${reverse('tos')}">${_('Terms of Service')}</a></li>
+          <li><a href="${reverse('tos')}#privacy">${_('Privacy Policy')}</a></li>
+          <li><a href="${reverse('tos')}#honor">${_('Honor Code')}</a></li>
+          <li><a href="${reverse('tos')}#copyright">${_('Copyright')}</a></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="references">
+      <a href="http://openedx.org" style="padding-bottom:10px">
+        <span class="sr">${_('Powered by {platform_name}').format(platform_name='Open edX')}</span>
+        <img src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag-light.png" height="40" alt="${_('Powered by {platform_name}').format(platform_name='Open edX')}"/>
+      </a>
+    </div>
+  </footer>
+</div>

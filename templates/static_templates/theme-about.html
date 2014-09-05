@@ -1,0 +1,80 @@
+## mako
+<%!
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+%>
+<%namespace name='static' file='/static_content.html'/>
+
+<%inherit file="/main.html" />
+
+<%block name="title"><title>${_('About {PLATFORM_NAME}').format(PLATFORM_NAME='EPAM MOOC')}</title></%block>
+
+<%block name="js_extra">
+  <script type="text/javascript">
+    $(function() {
+      $('section.message').hide();
+      $('#about-menu a').removeClass('active');
+      window.scrollTo(0,0);
+      
+      if ( document.location.href.indexOf('#faq') > -1 ) {
+        $('section#faq').show();
+        $('#about-menu a.faq').addClass('active');
+      } else {
+        $('section#about').show();
+        $('#about-menu a.about').addClass('active');
+      }
+      
+      $('#about-menu a').click(function(event) {
+        event.preventDefault();
+        $('#about-menu a').removeClass('active');
+        $(this).addClass('active');
+        var clickId = "section" + $(this).attr('href');
+        $('section.message').hide();
+        $(clickId).show();
+      });
+    });
+  </script>
+</%block>
+
+<section class="container about" style="width: auto;">
+  <nav id="about-menu">
+    <a href="#about" class="about active">${_('About')}</a>
+    <a href="#faq" class="faq">${_('Faq')}</a>
+  </nav>
+
+  <section class="vision">
+
+## About Section ##
+    <section class="message left" id="about">
+      <div class="photo">
+        <img src="${static.url('themes/stanford/images/IMG_epam.jpg')}" alt="${_('EPAM')}" />
+          <!-- Image Copyright owned by Giulio Gratta -->
+      </div>
+      <article>
+        <h2>${_('About')}</h2>
+        <p><strong>История появления пилотного MOOC-курса на платформе EDX</strong><br />
+        Вашему вниманию предоставлен пилотный запуск платформы edX и курса Parallel Computing in Java. Курс имеет свою историю. Он был создан в рамках сотрудничества с НТУУ КПИ и прочитан для студентов осенью 2013 года. Об этом можно прочитать на <a href="https://info.epam.com/nolang/indepartment/kyiv/office-news/project/2013/epam-teaching-initiative">инфопортале</a>.<br />
+        На достигнутом решили не останавливаться и сделать доступным этот курс online. Результат представлен Вашему вниманию. Авторы он-лайн курса <a href="https://upsa.epam.com/workload/employeeView.do?employeeId=4060741400007525345">Дмитрий Александров</a>, <a href="https://upsa.epam.com/workload/employeeView.do?employeeId=4060741400006279103">Юрий Бура</a>, <a href="https://upsa.epam.com/workload/employeeView.do?employeeId=4060741400005710890">Михаил Козик</a>, <a href="https://upsa.epam.com/workload/employeeView.do?employeeId=4060741400006170303">Андрей Родионов</a> очень надеются, что Вы найдете для себя полезными знания и навыки, полученные в результате прохождения курса.        
+      </article>
+      <hr class="fade-right-hr-divider">
+    </section>
+
+
+## FAQ Section ##
+    <section class="message left" id="faq">
+      <div class="photo">
+        <img src="${static.url('themes/stanford/images/memchu.jpg')}" alt="${_('EPAM')}" />
+      </div>
+      <article>
+        <h2>${_('FAQs')}</h2>
+        <p><strong>${_('What browsers are recommended for use with {platform_name}?').format(platform_name='EPAM MOOC OpenEdX')}</strong><br />
+        ${_('The latest versions of {chrome_link}, {firefox_link}, and {safari_link}. (The site is currently not optimized for mobile use.)').format(
+            chrome_link='<a href="http://chrome.google.com/">Google Chrome</a>',
+            firefox_link='<a href="http://www.mozilla.org/firefox">Mozilla Firefox</a>',
+            safari_link='<a href="http://www.apple.com/safari/">Apple Safari</a>'
+          )}
+        </p> 
+      </article>
+      <hr class="fade-right-hr-divider">
+    </section>
+</section>
