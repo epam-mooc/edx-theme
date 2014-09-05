@@ -14,7 +14,7 @@ Production Pack
   * edxapp_theme_version: master
 2. Execute update command:
   * sudo /edx/bin/update edx-platform master
-3. If in the end of execution you see 0 errors, it execute normally, otherwise I'm sorry.
+3. If in the end of execution you see 0 errors, it execute normally, otherwise I'm sorry - in this case you can find log files here: '/edx/var/log' and try to fix it.
 
 License
 =======
