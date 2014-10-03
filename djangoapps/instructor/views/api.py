@@ -1505,7 +1505,7 @@ def spoc_gradebook(request, course_id):
             'grade_summary': student_grades(student, request, course),
             'realname': student.profile.name,
         }
-        for student in enrolled_students if student != None
+        for student in enrolled_students if student.profile != None
     ]
 
     return render_to_response('courseware/gradebook.html', {
